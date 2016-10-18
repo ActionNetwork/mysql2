@@ -43,6 +43,7 @@ module Mysql2
 
       ssl_options = opts.values_at(:sslkey, :sslcert, :sslca, :sslcapath, :sslcipher)
       ssl_set(*ssl_options) if ssl_options.any?
+      self.ssl_mode = parse_ssl_mode(opts[:ssl_mode]) if opts[:ssl_mode]
 
       if [:user,:pass,:hostname,:dbname,:db,:sock].any?{|k| @query_options.has_key?(k) }
         warn "============= WARNING FROM mysql2 ============="
@@ -72,6 +73,31 @@ module Mysql2
 
     def self.default_query_options
       @@default_query_options
+    end
+
+    def parse_ssl_mode(mode)
+      m = mode.to_s.upcase
+      if m.start_with?('SSL_MODE_')
+        return Mysql2::Client.const_get(m) if Mysql2::Client.const_defined?(m)
+      else
+        x = 'SSL_MODE_' + m
+        return Mysql2::Client.const_get(x) if Mysql2::Client.const_defined?(x)
+      end
+      warn "Unknown MySQL ssl_mode flag: #{mode}"
+    end
+
+    def parse_flags_array(flags, initial = 0)
+      flags.reduce(initial) do |memo, f|
+        fneg = f.start_with?('-') ? f[1..-1] : nil
+        if fneg && fneg =~ /^\w+$/ && Mysql2::Client.const_defined?(fneg)
+          memo & ~ Mysql2::Client.const_get(fneg)
+        elsif f && f =~ /^\w+$/ && Mysql2::Client.const_defined?(f)
+          memo | Mysql2::Client.const_get(f)
+        else
+          warn "Unknown MySQL connection flag: '#{f}'"
+          memo
+        end
+      end
     end
 
     if Thread.respond_to?(:handle_interrupt)
