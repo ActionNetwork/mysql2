@@ -1,4 +1,4 @@
-/* C code produced by gperf version 3.0.3 */
+/* C code produced by gperf version 3.0.4 */
 /* Command-line: gperf  */
 /* Computed positions: -k'1,3,$' */
 
@@ -30,7 +30,7 @@ error "gperf generated tables don't work with this execution character set. Plea
 #endif
 
 struct mysql2_mysql_enc_name_to_rb_map { const char *name; const char *rb_name; };
-/* maximum key range = 66, duplicates = 0 */
+/* maximum key range = 71, duplicates = 0 */
 
 #ifdef __GNUC__
 __inline
@@ -78,7 +78,7 @@ mysql2_mysql_enc_name_to_rb_hash (str, len)
 
 #ifdef __GNUC__
 __inline
-#ifdef __GNUC_STDC_INLINE__
+#if defined __GNUC_STDC_INLINE__ || defined __GNUC_GNU_INLINE__
 __attribute__ ((__gnu_inline__))
 #endif
 #endif
@@ -93,7 +93,7 @@ mysql2_mysql_enc_name_to_rb (str, len)
       MIN_WORD_LENGTH = 3,
       MAX_WORD_LENGTH = 8,
       MIN_HASH_VALUE = 3,
-      MAX_HASH_VALUE = 68
+      MAX_HASH_VALUE = 73
     };
 
   static const struct mysql2_mysql_enc_name_to_rb_map wordlist[] =
@@ -101,54 +101,59 @@ mysql2_mysql_enc_name_to_rb (str, len)
       {""}, {""}, {""},
       {"gbk", "GBK"},
       {""},
-      {"greek", "ISO-8859-7"},
+      {"utf32", "UTF-32"},
       {"gb2312", "GB2312"},
       {"keybcs2", NULL},
       {""},
       {"ucs2", "UTF-16BE"},
       {"koi8u", "KOI8-R"},
       {"binary", "ASCII-8BIT"},
-      {"eucjpms", "eucJP-ms"},
-      {""},
+      {"utf8mb4", "UTF-8"},
+      {"macroman", "macRoman"},
       {"ujis", "eucJP-ms"},
-      {"cp852", "CP852"},
+      {"greek", "ISO-8859-7"},
       {"cp1251", "Windows-1251"},
-      {"geostd8", NULL},
+      {"utf16le", "UTF-16LE"},
       {""},
       {"sjis", "Shift_JIS"},
       {"macce", "macCentEuro"},
+      {"cp1257", "Windows-1257"},
+      {"eucjpms", "eucJP-ms"},
+      {""},
+      {"utf8", "UTF-8"},
+      {"cp852", "CP852"},
+      {"cp1250", "Windows-1250"},
+      {"gb18030", "GB18030"},
+      {""},
+      {"swe7", NULL},
+      {"koi8r", "KOI8-R"},
+      {"tis620", "TIS-620"},
+      {"geostd8", NULL},
+      {""},
+      {"big5", "Big5"},
+      {"euckr", "EUC-KR"},
       {"latin2", "ISO-8859-2"},
       {"utf8mb3", "UTF-8"},
       {""},
       {"dec8", NULL},
-      {"utf32", "UTF-32"},
+      {"cp850", "CP850"},
       {"latin1", "ISO-8859-1"},
-      {"utf8mb4", "UTF-8"},
+      {""},
       {"hp8", NULL},
-      {"swe7", NULL},
-      {"euckr", "EUC-KR"},
-      {"cp1257", "Windows-1257"},
-      {""}, {""},
-      {"utf8", "UTF-8"},
-      {"koi8r", "KOI8-R"},
-      {"cp1256", "Windows-1256"},
-      {""}, {""}, {""},
-      {"cp866", "IBM866"},
+      {""},
+      {"utf16", "UTF-16"},
       {"latin7", "ISO-8859-13"},
       {""}, {""}, {""},
       {"ascii", "US-ASCII"},
-      {"hebrew", "ISO-8859-8"},
-      {""}, {""},
-      {"big5", "Big5"},
-      {"utf16", "UTF-16"},
-      {"cp1250", "Windows-1250"},
-      {""}, {""}, {""},
-      {"cp850", "CP850"},
-      {"tis620", "TIS-620"},
+      {"cp1256", "Windows-1256"},
       {""}, {""}, {""},
       {"cp932", "Windows-31J"},
+      {"hebrew", "ISO-8859-8"},
+      {""}, {""}, {""}, {""},
       {"latin5", "ISO-8859-9"},
-      {""}, {""}, {""}, {""}, {""}, {""},
+      {""}, {""}, {""},
+      {"cp866", "IBM866"},
+      {""}, {""}, {""}, {""}, {""}, {""}, {""},
       {"armscii8", NULL}
     };
 
